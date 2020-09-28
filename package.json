@@ -5,6 +5,9 @@
     "bin": {
         "$": "./bin/index.js"
     },
+    "scripts": {
+        "start": "node ./bin/index.js"
+    },
     "dependencies": {
         "colors": "^1.2.1",
         "commander": "^2.15.1",
