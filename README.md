@@ -7,7 +7,7 @@ npm install -g
 npm start
 
 # add client 
-$ login <name>
+$ login name
 
 # topup login client
-$ topup <amount>
+$ topup amount
