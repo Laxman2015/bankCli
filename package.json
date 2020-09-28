@@ -1,0 +1,14 @@
+{
+    "name": "rbank-app",
+    "version": "1.0.0",
+    "preferGlobal": true,
+    "bin": {
+        "$": "./bin/index.js"
+    },
+    "dependencies": {
+        "colors": "^1.2.1",
+        "commander": "^2.15.1",
+        "inquirer": "^5.2.0",
+        "node-localstorage": "^2.1.6" 
+    }
+}
