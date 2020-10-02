@@ -1,13 +1,17 @@
 # Working
 
 # install globally
-npm install -g
+npm install -g ./
 
 # run the application
 npm start
 
 # add client 
-$ login name
+bcli login name
 
 # topup login client
-$ topup amount
+bcli topup amount
+
+
+# pay from logined client
+bcli pay clientName amount
