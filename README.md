@@ -17,7 +17,7 @@ bcli topup amount
 bcli pay clientName amount
 
 
-Other ways:
+# Other ways:
 
 Create a new folder
 run 'npm init y'
