@@ -1,55 +1,48 @@
 #!/usr/bin/env node
 
-const program = require('commander');
+const { Command } = require('commander');
+const program = new Command();
 
 // import function from constant
 
-const { login, topup, pay} = require('../lib/order');
+const { login, topup, payment } = require("../lib/order");
 if (typeof localStorage === "undefined" || localStorage === null) {
-    var LocalStorage = require("node-localstorage").LocalStorage;
-    localStorage = new LocalStorage("./localData");
-  }
-else{
-    localStorage.clear();
+  var LocalStorage = require("node-localstorage").LocalStorage;
+  localStorage = new LocalStorage("./localData");
+} else {
+  localStorage.clear();
 }
 
 /*******************************************/
 
 program
-    .command('topup <balance>') // sub-command name
-    .alias('tp') // alternative sub-command is `al`
-    .description('top up balance') // command description
+  .command("topup <balance>")
+  .alias("tp")
+  .description("top up balance")
 
-    // function to execute when command is uses
-    .action(function (balance) {
-        const loginedClient = localStorage.getItem('lastlogin');
-        topup(loginedClient, balance);
-    });
-
-
+  .action(function (balance) {
+    const loginedClient = localStorage.getItem("lastlogin");
+    topup(loginedClient, balance);
+  })
+  .argv;
 // login as Client
 program
-    .command('login <clientName>') // sub-command name
-    .alias('lg') // alternative sub-command is `lg`
-    .description('Login as a new client') // command description
+  .command("login <clientName>")
+  .alias("lg")
+  .description("Login as a new client")
 
-    // function to execute when command is uses
-    .action(function (name) {
-        login(name);
-    });
-
-    // payment
-program
-.command('<client1> pay <client2> <amount>') // sub-command name
-.alias('p') // alternative sub-command is `p`
-.description('Login as a new client') // command description
-
-// function to execute when command is uses
-.action(function (name) {
-    console.log(name)
+  .action(function (name) {
     login(name);
-});
+  }).argv;
+// payment
+program
 
+.command("pay <client2> <amount>")
+.alias("p")
+.description("Make Payment")
 
-// allow commander to parse `process.argv`
+.action(function (client2, amount) {
+  const client1 = localStorage.getItem("lastlogin");
+  payment(client1, client2, amount);
+}).argv;
 program.parse(process.argv);

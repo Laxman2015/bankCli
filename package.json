@@ -2,8 +2,9 @@
     "name": "rbank-app",
     "version": "1.0.0",
     "preferGlobal": true,
+    "main":"bin/index.js",
     "bin": {
-        "$": "./bin/index.js"
+        "bcli": "./bin/index.js"
     },
     "scripts": {
         "start": "node ./bin/index.js"
@@ -12,6 +13,6 @@
         "colors": "^1.2.1",
         "commander": "^2.15.1",
         "inquirer": "^5.2.0",
-        "node-localstorage": "^2.1.6" 
+        "node-localstorage": "^2.1.6"
     }
 }
